@@ -5,9 +5,7 @@
     form.addEventListener('submit',event=>{
         // event.preventDefault();
         event.stopPropagation();
-
         const {target} = event;
-
         const info = target.querySelectorAll('input,select,textarea');
         let terms = target.querySelector('.form-check-input')
         let data = null;
