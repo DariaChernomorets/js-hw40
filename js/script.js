@@ -3,7 +3,7 @@
     const key = 'dataKey'
     const form = document.querySelector('#form');
     form.addEventListener('submit',event=>{
-        event.preventDefault();
+        // event.preventDefault();
         event.stopPropagation();
 
         const {target} = event;
@@ -15,14 +15,15 @@
         if (terms.checked) {
             data = Array.from(info)
                 .reduce((acc,item)=>{
+
                     acc[item.name] = item.value;
                     return acc
 
                 },{})
 
-            console.log(data)
         } else {
             alert('Please agree to terms')
+            throw new Error('Please agree to terms')
         }
 
         const dataToSave = localStorage.getItem(key) ?
@@ -37,14 +38,13 @@
         let doc = window.open().document;
 
         for (let key in dataToSave){
+
             doc.write(`<h1>User ${id++}</h1>`)
 
             for (let info in dataToSave[key]) {
 
-
                 doc.write(`
-
-                    
+ 
                     <p>
 
                         ${info} : ${dataToSave[key][info]}
@@ -56,8 +56,7 @@
         }
 
    doc.close();
-
-    })
+  })
 
 })();
 
