@@ -13,8 +13,12 @@
         if (terms.checked) {
             data = Array.from(info)
                 .reduce((acc,item)=>{
+                    if(item.value !== ''){
+                        acc[item.name] = item.value;
+                    } else {
+                        acc[item.name] = 'info was not filled';
+                    }
 
-                    acc[item.name] = item.value;
                     return acc
 
                 },{})
